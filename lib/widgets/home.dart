@@ -32,7 +32,7 @@ class _HomeState extends State<Home> {
         Feed(
           userImage: 'assets/images/user_$i.jpg',
           userName: 'Yuki Otsuka $i',
-          time: '1 hr',
+          time: '昨日・',
           text: Cutesum.loremCutesum(words: 20),
           image: 'assets/images/photo_$i.jpg',
         ),
@@ -41,7 +41,7 @@ class _HomeState extends State<Home> {
   }
 
   Widget _separatorWidget() => Container(
-        height: 10,
+        height: 8,
         margin: EdgeInsets.only(top: 10, bottom: 10),
         color: Colors.grey[400],
       );
@@ -76,6 +76,19 @@ class _HomeState extends State<Home> {
                     FeedWidget(
                       feed: _feeds[0],
                     ),
+                    _separatorWidget(),
+                    FeedWidget(
+                      feed: _feeds[1],
+                    ),
+                    _separatorWidget(),
+                    FeedWidget(
+                      feed: _feeds[2],
+                    ),
+                    _separatorWidget(),
+                    FeedWidget(
+                      feed: _feeds[3],
+                    ),
+                    _separatorWidget(),
                   ],
                 ),
               ),
