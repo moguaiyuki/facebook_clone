@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import './header.dart';
 import './story.dart';
+import './feed_widget.dart';
+import '../models/feed.dart';
+import 'package:lorem_cutesum/lorem_cutesum.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -9,8 +12,9 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   final List<Story> _stories = [];
+  final List<Feed> _feeds = [];
 
-  void generateStroies() {
+  void _generateStroies() {
     for (int i = 1; i <= 6; i++) {
       _stories.add(
         Story(
@@ -22,40 +26,56 @@ class _HomeState extends State<Home> {
     }
   }
 
+  void _generateFeeds() {
+    for (int i = 1; i <= 5; i++) {
+      _feeds.add(
+        Feed(
+          userImage: 'assets/images/user_$i.jpg',
+          userName: 'Yuki Otsuka $i',
+          time: '1 hr',
+          text: Cutesum.loremCutesum(words: 20),
+          image: 'assets/images/photo_$i.jpg',
+        ),
+      );
+    }
+  }
+
+  Widget _separatorWidget() => Container(
+        height: 10,
+        margin: EdgeInsets.only(top: 10, bottom: 10),
+        color: Colors.grey[400],
+      );
+
   @override
   Widget build(BuildContext context) {
-    generateStroies();
+    _generateStroies();
+    _generateFeeds();
 
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Column(
-        // crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Header(),
           Expanded(
             child: SingleChildScrollView(
               scrollDirection: Axis.vertical,
               child: Padding(
-                padding: EdgeInsets.all(20),
+                padding: EdgeInsets.only(top: 20, bottom: 20),
                 child: Column(
                   children: <Widget>[
-                    Text(
-                      'ストーリーズ',
-                      style: TextStyle(
-                          color: Colors.grey[900],
-                          fontWeight: FontWeight.bold,
-                          fontSize: 23,
-                          letterSpacing: 1.3),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
+                    _separatorWidget(),
                     Container(
                       height: 185,
                       child: ListView(
                         scrollDirection: Axis.horizontal,
                         children: _stories,
                       ),
-                    )
+                    ),
+                    _separatorWidget(),
+                    FeedWidget(
+                      feed: _feeds[0],
+                    ),
                   ],
                 ),
               ),
