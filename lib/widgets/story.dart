@@ -12,7 +12,7 @@ class Story extends StatelessWidget {
   Widget build(BuildContext context) => AspectRatio(
         aspectRatio: 1.5 / 2,
         child: Container(
-          margin: EdgeInsets.only(right: 10),
+          margin: EdgeInsets.only(right: 5, left: 10),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
             image: DecorationImage(
