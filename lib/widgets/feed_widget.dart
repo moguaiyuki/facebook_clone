@@ -122,7 +122,7 @@ class FeedWidget extends StatelessWidget {
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   image: DecorationImage(
-                    image: AssetImage(feed.image),
+                    image: AssetImage(feed.userImage),
                     fit: BoxFit.cover,
                   ),
                 ),

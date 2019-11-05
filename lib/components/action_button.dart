@@ -27,7 +27,7 @@ class ActionButton extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
-                  color: color,
+                  color: Colors.black54,
                 ),
               )
             ],

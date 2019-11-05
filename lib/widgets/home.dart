@@ -4,6 +4,7 @@ import './story.dart';
 import './feed_widget.dart';
 import '../models/feed.dart';
 import 'package:lorem_cutesum/lorem_cutesum.dart';
+import './post_widget.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -15,11 +16,11 @@ class _HomeState extends State<Home> {
   final List<Feed> _feeds = [];
 
   void _generateStroies() {
-    for (int i = 1; i <= 6; i++) {
+    for (int i = 1; i <= 5; i++) {
       _stories.add(
         Story(
-          storyImage: 'assets/images/photo_$i.jpg',
-          userImage: 'assets/images/user_$i.jpg',
+          storyImage: 'assets/images/image$i.jpg',
+          userImage: 'assets/images/animal$i.jpg',
           userName: 'Yuki Otsuka $i',
         ),
       );
@@ -30,11 +31,11 @@ class _HomeState extends State<Home> {
     for (int i = 1; i <= 5; i++) {
       _feeds.add(
         Feed(
-          userImage: 'assets/images/user_$i.jpg',
+          userImage: 'assets/images/animal$i.jpg',
           userName: 'Yuki Otsuka $i',
           time: '昨日・',
           text: Cutesum.loremCutesum(words: 20),
-          image: 'assets/images/photo_$i.jpg',
+          image: 'assets/images/pic$i.jpg',
         ),
       );
     }
@@ -61,9 +62,10 @@ class _HomeState extends State<Home> {
             child: SingleChildScrollView(
               scrollDirection: Axis.vertical,
               child: Padding(
-                padding: EdgeInsets.only(top: 20, bottom: 20),
+                padding: EdgeInsets.only(bottom: 20),
                 child: Column(
                   children: <Widget>[
+                    PostWidget(),
                     _separatorWidget(),
                     Container(
                       height: 185,

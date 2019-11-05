@@ -1,6 +1,20 @@
 import 'package:flutter/material.dart';
 
 class Header extends StatelessWidget {
+  Widget headerIcon(IconData icon) => Container(
+        width: 45,
+        height: 45,
+        padding: EdgeInsets.all(3),
+        decoration:
+            BoxDecoration(color: Colors.grey[300], shape: BoxShape.circle),
+        child: Center(
+          child: Icon(
+            icon,
+            size: 30,
+          ),
+        ),
+      );
+
   @override
   Widget build(BuildContext context) => Container(
         height: 120,
@@ -8,20 +22,14 @@ class Header extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            Image.asset('assets/images/face.png'),
+            Image.asset('assets/images/facebook.png'),
             Row(
               children: <Widget>[
-                Icon(
-                  Icons.search,
-                  size: 30,
-                ),
+                headerIcon(Icons.search),
                 SizedBox(
                   width: 10,
                 ),
-                Icon(
-                  Icons.message,
-                  size: 30,
-                )
+                headerIcon(Icons.message),
               ],
             ),
           ],
